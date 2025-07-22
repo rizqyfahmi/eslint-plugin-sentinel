@@ -6,8 +6,9 @@
     "eslint",
     "eslintplugin",
     "eslint-plugin",
-    "nested-condition-depth",
-    "nested-looping-depth"
+    "nested",
+    "max-nested-loops",
+    "max-nested-conditions"
   ],
   "homepage": "https://github.com/rizqyfahmi/eslint-plugin-essential#readme",
   "bugs": {
