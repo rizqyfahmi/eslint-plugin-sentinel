@@ -1,0 +1,72 @@
+{
+  "name": "eslint-plugin-essential",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "nested-condition-depth",
+    "nested-looping-depth"
+  ],
+  "homepage": "https://github.com/rizqyfahmi/eslint-plugin-essential#readme",
+  "bugs": {
+    "url": "https://github.com/rizqyfahmi/eslint-plugin-essential/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rizqyfahmi/eslint-plugin-essential.git"
+  },
+  "license": "MIT",
+  "author": "Ahmad Yulia Rizqy Fahmi <https://github.com/rizqyfahmi>",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
+  },
+  "scripts": {
+    "lint": "npx eslint src/ --ext .ts",
+    "commit": "git-cz",
+    "build": "tsc",
+    "test": "jest --coverage",
+    "clean": "rm -rf node_modules && rm package-lock.json && npm cache clean --force && npm install",
+    "prepare": "husky"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "provenance": true,
+    "access": "public"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.31.0",
+    "@stylistic/eslint-plugin": "^5.2.1",
+    "@types/jest": "^30.0.0",
+    "@typescript-eslint/rule-tester": "^8.37.0",
+    "@typescript-eslint/utils": "^8.37.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-git": "^1.12.0",
+    "eslint": "^9.31.0",
+    "husky": "^9.1.7",
+    "jest": "^30.0.5",
+    "lint-staged": "^16.1.2",
+    "semantic-release": "^24.2.7",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0"
+  }
+}

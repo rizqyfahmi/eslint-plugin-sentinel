@@ -1,0 +1,14 @@
+# Node dependencies
+node_modules/
+
+# Build
+dist/
+
+# Coverage Test
+coverage/
+
+# Lock files
+package-lock.json
+
+# NPM Pack sigstore
+*.tgz
