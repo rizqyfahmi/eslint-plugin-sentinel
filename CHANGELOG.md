@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.0.0...v1.1.0) (2025-07-22)
+
+
+### Features
+
+* **rule:** Solve test case for max-nested-conditions ([95e3839](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/95e383996a3221f54a6b7e34cae1fea4ab66ca04))
+
 # 1.0.0 (2025-07-22)
 
 
