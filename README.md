@@ -53,9 +53,7 @@ module.exports = {
 ```js
 for (let i = 0; i < 10; i++) {
   while (true) {  // ❌ Too deeply nested
-    for (let j = 0; j < 5; j++) {
-      // ...
-    }
+    // ...
   }
 }
 ```
@@ -73,7 +71,53 @@ for (let i = 0; i < 10; i++) {
 * `maxDepth` (number) – The maximum allowed nesting level (default: `1`).
 
 ```js
-"eslint-plugin-essential/max-nested-loops": ["error", { "maxDepth": 2 }]
+"eslint-plugin-essential/max-nested-loops": ["error", { "maxDepth": 1 }]
+```
+
+### 2. `max-nested-conditionals`
+
+**Limits the depth of nested conditional statements like `if`, `switch`, and ternary (`?:`) expressions.**
+
+Default maximum depth: **1**
+
+#### ❌ Incorrect
+
+```js
+if (condition1) {
+  if (condition2) {  // ❌ Exceeds max depth of 1
+    return 'Too Deep';
+  }
+}
+```
+
+```js
+const result = condition1
+  ? condition2     // ❌ Nested ternary
+    ? 'A'
+    : 'B'
+  : 'C';
+```
+
+#### ✅ Correct (Depth ≤ 1)
+
+```js
+if (condition1) {
+  return 'Shallow enough';
+}
+```
+
+```js
+const result = condition1 ? 'A' : 'B';
+```
+
+> ✅ These examples have **only one conditional structure** at the top level — no nesting inside another conditional.
+
+#### Options
+
+* `maxDepth` (number) – The maximum allowed nesting level of conditionals (default: `1`).
+
+```js
+"eslint-plugin-essential/max-nested-conditionals": ["error", { "maxDepth": 1 }]
 ```
 
 ---
