@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.1.2...v1.2.0) (2025-07-23)
+
+
+### Features
+
+* **rule:** Solve test case for max-alternative-conditions ([12934c3](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/12934c3002e1585d6ec73756bc8fd63658a3c59f))
+
 ## [1.1.2](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.1.1...v1.1.2) (2025-07-23)
 
 
