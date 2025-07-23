@@ -21,6 +21,7 @@ describe("max-nested-conditionals rule", () => {
             invalid: [],
         })
     })
+
     test("should allow nesting within default depth (1)", () => {
         ruleTester.run("max-nested-conditionals", rule, {
             valid: [
@@ -33,7 +34,7 @@ describe("max-nested-conditionals rule", () => {
                 },
                 {
                     code: `
-                      const result = a ? b : c;
+                        const result = a ? b : c;
                     `,
                 },
                 {
@@ -41,7 +42,7 @@ describe("max-nested-conditionals rule", () => {
                         switch (x) {
                             case 1:
                                 doSomething();
-                            break;
+                                break;
                         }
                     `,
                 },
@@ -57,7 +58,7 @@ describe("max-nested-conditionals rule", () => {
                     code: `
                         if (a) {
                             if (b) {
-                              doSomething()
+                                doSomething()
                             }
                         }
                     `,
@@ -159,9 +160,9 @@ describe("max-nested-conditionals rule", () => {
                                         case 2:
                                             doSomething()
                                             break;
-                                        }
+                                    }
                                 }
-                            break;
+                                break;
                         }
                     `,
                     options: [{ maxDepth: 2 }],
@@ -174,6 +175,27 @@ describe("max-nested-conditionals rule", () => {
                     ],
                 },
             ],
+        })
+    })
+
+    test("should allow else-if chains as same depth", () => {
+        ruleTester.run("max-nested-conditionals", rule, {
+            valid: [
+                {
+                    code: `
+                        if (a) {
+                            doSomething();
+                        } else if (b) {
+                            doSomethingElse();
+                        } else if (c) {
+                            anotherThing();
+                        } else {
+                            fallback();
+                        }
+                    `,
+                }
+            ],
+            invalid: [],
         })
     })
 })
