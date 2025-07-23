@@ -14,9 +14,9 @@
 
 Install the plugin as a development dependency:
 
-```sh
+```bash
 npm install eslint-plugin-essential --save-dev
-```
+````
 
 ---
 
@@ -27,13 +27,18 @@ In your ESLint configuration file (e.g., `.eslintrc.js`), import and configure t
 ```js
 import essential from "eslint-plugin-essential";
 
-module.exports = {
+export default {
   plugins: {
     "eslint-plugin-essential": essential,
   },
   rules: {
-    "eslint-plugin-essential/max-nested-loops": ["error", { "maxDepth": 1 }],
-    // Add other rules here as they are implemented
+    "eslint-plugin-essential/max-nested-loops": ["error", { maxDepth: 1 }],
+    "eslint-plugin-essential/max-nested-conditionals": ["error", { maxDepth: 1 }],
+    "eslint-plugin-essential/max-alternative-conditions": ["error", {
+      maxElseIf: 2,
+      maxElse: 1,
+      maxCase: 5
+    }],
   },
 };
 ```
@@ -68,17 +73,17 @@ for (let i = 0; i < 10; i++) {
 
 #### Options
 
-* `maxDepth` (number) – The maximum allowed nesting level (default: `1`).
+* `maxDepth` (number) – The maximum allowed nesting level (default: `1`)
 
 ```js
-"eslint-plugin-essential/max-nested-loops": ["error", { "maxDepth": 1 }]
+"eslint-plugin-essential/max-nested-loops": ["error", { maxDepth: 1 }]
 ```
+
+---
 
 ### 2. `max-nested-conditionals`
 
 **Limits the depth of nested conditional statements like `if`, `switch`, and ternary (`?:`) expressions.**
-
-Default maximum depth: **1**
 
 #### ❌ Incorrect
 
@@ -98,7 +103,7 @@ const result = condition1
   : 'C';
 ```
 
-#### ✅ Correct (Depth ≤ 1)
+#### ✅ Correct
 
 ```js
 if (condition1) {
@@ -110,34 +115,81 @@ if (condition1) {
 const result = condition1 ? 'A' : 'B';
 ```
 
-> ✅ These examples have **only one conditional structure** at the top level — no nesting inside another conditional.
-
 #### Options
 
-* `maxDepth` (number) – The maximum allowed nesting level of conditionals (default: `1`).
+* `maxDepth` (number) – The maximum allowed nesting level (default: `1`)
 
 ```js
-"eslint-plugin-essential/max-nested-conditionals": ["error", { "maxDepth": 1 }]
+"eslint-plugin-essential/max-nested-conditionals": ["error", { maxDepth: 1 }]
 ```
 
 ---
 
-## 🧩 Adding More Rules
+### 3. `max-alternative-conditions`
 
-As this plugin evolves, more rules will be added to help you enforce best practices across your codebase. Stay tuned!
+**Limits the number of `else if`, `else`, and `switch case` branches to reduce complex branching logic.**
+
+#### ❌ Incorrect
+
+```js
+if (a) {}
+else if (b) {}
+else if (c) {}
+else if (d) {}  // ❌ Too many else-if branches
+```
+
+```js
+if (x) {}
+else {}  // ❌ Too many else branches if `maxElse` is 0
+```
+
+```js
+switch (value) {
+  case 1: break;
+  case 2: break;
+  case 3: break;
+  case 4: break;
+  case 5: break;
+  case 6: break;  // ❌ Exceeds maxCase
+}
+```
+
+#### ✅ Correct
+
+```js
+if (a) {}
+else if (b) {}
+else {}  // ✅ Within allowed branch limits
+```
+
+```js
+switch (value) {
+  case 1: break;
+  case 2: break;
+  case 3: break;
+}
+```
+
+#### Options
+
+You can customize the limits using the following options:
+
+* `maxElseIf` (number) – Maximum allowed `else if` branches (default: `2`)
+* `maxElse` (number) – Maximum allowed `else` branches (default: `1`)
+* `maxCase` (number) – Maximum allowed `switch` case clauses (default: `5`)
+
+```js
+"eslint-plugin-essential/max-alternative-conditions": ["error", {
+  maxElseIf: 2,
+  maxElse: 1,
+  maxCase: 5
+}]
+```
+
+> ℹ️ If no options are specified, the default limits apply.
 
 ---
 
-## 📣 Contributing
+## 🔓 License
 
-Want to suggest a new rule or improve an existing one? Feel free to open an issue or pull request!
-
----
-
-## 📄 License
-
-MIT © Ahmad Yulia Rizqy Fahmi
-
----
-
-Let me know if you’d like help creating documentation for specific rules or setting up rule testing.
+See the [LICENSE](https://github.com/rizqyfahmi/eslint-plugin-essential/blob/master/LICENSE) file for license rights and limitations (MIT).
