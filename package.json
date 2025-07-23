@@ -8,7 +8,8 @@
     "eslint-plugin",
     "nested",
     "max-nested-loops",
-    "max-nested-conditions"
+    "max-nested-conditions",
+    "max-alternative-conditions"
   ],
   "homepage": "https://github.com/rizqyfahmi/eslint-plugin-essential#readme",
   "bugs": {
