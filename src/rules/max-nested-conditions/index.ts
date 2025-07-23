@@ -36,13 +36,23 @@ const rule = createRule({
 
         const depthStack: number[] = []
 
-        const enter = (node: TSESTree.Node) => {
-            const parentDepth = depthStack[depthStack.length - 1] ?? 0
-            const newDepth = CONDITIONAL_TYPES.has(node.type) ? parentDepth + 1 : parentDepth
+        const isElseIf = (node: TSESTree.Node, parent?: TSESTree.Node): boolean => {
+            return node.type === "IfStatement" && parent?.type === "IfStatement" && (parent as TSESTree.IfStatement).alternate === node
+        }
 
+        const enter = (node: TSESTree.Node) => {
+            const parent = node.parent as TSESTree.Node | undefined
+            const parentDepth = depthStack[depthStack.length - 1] ?? 0
+
+            if (!CONDITIONAL_TYPES.has(node.type)) {
+                depthStack.push(parentDepth)
+                return
+            }
+
+            const newDepth = isElseIf(node, parent) ? parentDepth : parentDepth + 1
             depthStack.push(newDepth)
 
-            if (CONDITIONAL_TYPES.has(node.type) && newDepth > maxDepth) {
+            if (newDepth > maxDepth) {
                 context.report({
                     node,
                     messageId: "tooDeep",
