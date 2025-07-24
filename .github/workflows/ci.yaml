@@ -81,6 +81,13 @@ jobs:
           ref: ${{ github.head_ref }}
           persist-credentials: false
 
+      - name: Run OpenSSF Scorecard
+        uses: ossf/scorecard-action@v2
+        with:
+          result_format: sarif
+          result_file: scorecard-result.sarif.json
+          publish_results: true
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
