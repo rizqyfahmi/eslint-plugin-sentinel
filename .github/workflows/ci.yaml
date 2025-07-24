@@ -6,26 +6,7 @@ on:
       - master
 
 jobs:
-  scorecard:
-    permissions:
-      id-token: write
-      contents: write
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run OpenSSF Scorecard
-        uses: ossf/scorecard-action@v2.4.0
-        with:
-          results_format: sarif
-          results_file: scorecard-results.sarif
-          publish_results: true
-
-      - name: Upload SARIF to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: scorecard-results.sarif
   lint:
-    needs: [scorecard]
     runs-on: ubuntu-latest
 
     steps:
@@ -99,6 +80,18 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           ref: ${{ github.head_ref }}
           persist-credentials: false
+
+      - name: Run OpenSSF Scorecard
+        uses: ossf/scorecard-action@v2.4.0
+        with:
+          results_format: sarif
+          results_file: scorecard-results.sarif
+          publish_results: true
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: scorecard-results.sarif
 
       - name: Use Node.js
         uses: actions/setup-node@v4
