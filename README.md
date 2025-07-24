@@ -39,6 +39,14 @@ export default {
       maxElse: 1,
       maxCase: 5
     }],
+    "eslint-plugin-essential/pattern-sort-import": ["error", [
+      "^react",
+      "^next",
+      "^mobx-react-lite$",
+      "^react-icons",
+      "^@/",
+      "^\\.",
+    ]],
   },
 };
 ```
@@ -187,6 +195,58 @@ You can customize the limits using the following options:
 ```
 
 > ℹ️ If no options are specified, the default limits apply.
+
+---
+
+### 4. `pattern-sort-import`
+
+**Sorts import statements according to configured regex patterns without reordering imports within the same group.**
+
+This rule enforces a custom order of import groups defined by regex patterns. Imports matching earlier patterns appear first, while imports within the same group keep their original order.
+
+#### ❌ Incorrect
+
+```ts
+import Link from "next/link"
+import { useEffect } from "react"
+import { observer } from "mobx-react-lite"
+import { TbInfoCircle } from "react-icons/tb"
+import styles from "./styles.module.css"
+import MyComponent from "@/components/my-component"
+```
+
+#### ✅ Correct
+
+```ts
+import { useEffect } from "react"
+import { TbInfoCircle } from "react-icons/tb"
+import Link from "next/link"
+import { observer } from "mobx-react-lite"
+import MyComponent from "@/components/my-component"
+import styles from "./styles.module.css"
+```
+
+#### Options
+
+An array of regex strings defining the import group order. Imports are grouped by matching these patterns.
+
+Example:
+
+```js
+"eslint-plugin-essential/pattern-sort-import": ["error", [
+  "^react",
+  "^next",
+  "^mobx-react-lite$",
+  "^react-icons",
+  "^@/",
+  "^\\.",
+]]
+```
+
+* Imports matching the first pattern (`^react`) come first.
+* Then imports matching `^next`, and so on.
+* Imports not matching any pattern appear last.
+* Imports inside the same group keep their original order.
 
 ---
 
