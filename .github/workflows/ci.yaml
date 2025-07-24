@@ -1,31 +1,14 @@
 name: CI Pipeline
 
 on:
-  push:
-    branches:
-      - master
+  workflow_run:
+    workflows: ["Scorecard Analysis"]
+    types:
+      - completed
 
 jobs:
-  scorecard:
-    permissions:
-      id-token: write
-      contents: write
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run OpenSSF Scorecard
-        uses: ossf/scorecard-action@v2.4.0
-        with:
-          results_format: sarif
-          results_file: scorecard-results.sarif
-          publish_results: true
-
-      - name: Upload SARIF to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: scorecard-results.sarif
   lint:
-    needs: [scorecard]
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +25,8 @@ jobs:
       - name: Run lint
         run: npm run lint
   test:
-    needs: [lint]
+    name: Test
+    needs: lint
     runs-on: ubuntu-latest
 
     steps:
@@ -64,7 +48,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
   publish:
-    needs: [test]
+    needs: test
     permissions:
       id-token: write
       contents: write

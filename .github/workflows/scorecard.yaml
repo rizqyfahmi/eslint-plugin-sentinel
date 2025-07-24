@@ -1,0 +1,51 @@
+name: Scorecard Analysis
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  scorecard:
+    permissions:
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    outputs:
+      sarif_file: ${{ steps.set-output.outputs.sarif_file }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run OpenSSF Scorecard
+        uses: ossf/scorecard-action@v2.4.0
+        with:
+          results_format: sarif
+          results_file: scorecard-results.sarif
+          publish_results: true
+
+      - name: Upload SARIF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scorecard-results
+          path: scorecard-results.sarif
+
+  upload:
+    needs: scorecard
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download SARIF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: scorecard-results
+          path: .
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: scorecard-results.sarif
