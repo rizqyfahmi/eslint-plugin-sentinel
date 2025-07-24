@@ -84,14 +84,9 @@ jobs:
       - name: Run OpenSSF Scorecard
         uses: ossf/scorecard-action@v2.4.0
         with:
-          results_format: sarif
-          results_file: scorecard-results.sarif
+          result_format: sarif
+          result_file: scorecard-result.sarif.json
           publish_results: true
-
-      - name: Upload SARIF to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: scorecard-results.sarif
 
       - name: Use Node.js
         uses: actions/setup-node@v4
