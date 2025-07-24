@@ -1,3 +1,16 @@
+## [1.3.2](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.3.1...v1.3.2) (2025-07-24)
+
+
+### Reverts
+
+* Revert "chore(release): 1.3.1 [skip ci]" ([7077cde](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/7077cde80b70ddb2421fb6b2de3271209a53cecd))
+* Revert "ci(pipeline): Add scorecard job" ([58db7f4](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/58db7f41deb59de19a54326f3f6cb44d0fd8e906))
+* Revert "ci(pipeline): Add scorecard job" ([ff5a2e6](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/ff5a2e63be2d46a8799be1d867a1780bfbd649b2))
+* Revert "ci(pipeline): Run OpenSSF Scorecard" ([557d003](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/557d0030b5c21931f77badcd6409901b2c92b483))
+* Revert "ci(pipeline): Upgrade OpenSSF Scorecard parameter" ([81372f2](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/81372f2efe6c92e148c946a5fafb1d6af859fc67))
+* Revert "ci(pipeline): Upgrade OpenSSF Scorecard version" ([00d540c](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/00d540c2efe57e2bde43527d4964b885cf2a9045))
+* Revert "docs(readme): Add OpenSSF Scorecard bedge" ([3c4fca3](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/3c4fca3e0ad77e7a42f787bb78d1c53a0f807442))
+
 # [1.3.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.2.0...v1.3.0) (2025-07-24)
 
 
