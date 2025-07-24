@@ -237,7 +237,6 @@ Example:
   "^react",
   "^next",
   "^mobx-react-lite$",
-  "^react-icons",
   "^@/",
   "^\\.",
 ]]
