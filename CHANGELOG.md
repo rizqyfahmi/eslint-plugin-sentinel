@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.2.0...v1.3.0) (2025-07-24)
+
+
+### Features
+
+* **rule:** Solve test case for pattern-sort-import rule ([5c02a6d](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/5c02a6d06165e129a4e5cdae5fe54e08c008a402))
+
 # [1.2.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.1.2...v1.2.0) (2025-07-23)
 
 
