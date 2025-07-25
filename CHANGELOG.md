@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.3.2...v1.4.0) (2025-07-25)
+
+
+### Features
+
+* **rule:** Solve test case for pattern-comment ([cc25f62](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/cc25f62229db28142cec3af73ec8c4308119439f))
+
 ## [1.3.2](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.3.1...v1.3.2) (2025-07-24)
 
 
