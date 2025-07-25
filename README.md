@@ -249,6 +249,50 @@ Example:
 
 ---
 
+### 5. `pattern-comments`
+
+**Disallows all comments that do not match a specific pattern (regex).**
+Use this rule to enforce a consistent format for all comments (e.g., requiring tags like `TODO:`, `@public`, etc.).
+
+#### ❌ Incorrect
+
+```js
+// this is a random comment
+
+/* just a block comment */
+
+/** some unstructured JSDoc */
+```
+
+#### ✅ Correct
+
+```js
+// TODO: handle edge case
+
+/** @deprecated Use another function */
+
+/* @public This is a public method */
+```
+
+#### Options
+
+You can customize which comment formats are allowed using a regular expression string.
+
+```js
+"eslint-plugin-essential/pattern-comments": ["error", {
+  allowPattern: "^((TODO|FIXME|NOTE|BUG|HACK|OPTIMIZE|REVIEW|SECURITY):|@(public|private|deprecated))"
+}]
+```
+
+* The example above allows only comments that start with:
+
+  * `TODO:`, `FIXME:`, `NOTE:`, `BUG:`, `HACK:`, `OPTIMIZE:`, `REVIEW:`, `SECURITY:`
+  * Or tags like `@public`, `@private`, `@deprecated`
+
+> 💡 By default, the rule uses the same pattern shown above. If no `allowPattern` is provided, this default is enforced.
+
+---
+
 ## 🔓 License
 
 See the [LICENSE](https://github.com/rizqyfahmi/eslint-plugin-essential/blob/master/LICENSE) file for license rights and limitations (MIT).
