@@ -11,6 +11,8 @@
     "max-nested-conditions",
     "max-alternative-conditions",
     "pattern-sort-import",
+    "pattern-comment",
+    "pattern",
     "sort",
     "sortimport",
     "sort-import",
