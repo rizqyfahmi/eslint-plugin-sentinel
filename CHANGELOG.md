@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.4.0...v1.5.0) (2025-07-25)
+
+
+### Features
+
+* **rule:** Solve test for removing disallow "else" from max-alternative-conditions ([8d46226](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/8d46226edc924b168a1f201225d4fdff3c77f391))
+
 # [1.4.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.3.2...v1.4.0) (2025-07-25)
 
 
