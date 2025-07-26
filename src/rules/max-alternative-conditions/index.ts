@@ -45,20 +45,20 @@ const rule = createRule<Options, MessageIds>({
         return {
             IfStatement: (node: TSESTree.IfStatement) => {
                 let elseIfCount = 0
-                let current = node.alternate
+                let current = node
 
-                // Count only 'else if' chains
-                while (current && current.type === "IfStatement") {
+                while (current.alternate && current.alternate.type === "IfStatement") {
                     elseIfCount++
                     current = current.alternate
-                }
 
-                if (elseIfCount > options.maxElseIf) {
-                    context.report({
-                        node,
-                        messageId: options.maxElseIf === 0 ? "disallowedElseIf" : "tooManyElseIf",
-                        data: { maxElseIf: options.maxElseIf },
-                    })
+                    if (elseIfCount > options.maxElseIf) {
+                        context.report({
+                            node: current.test, // Report only the condition of the violating 'else if'
+                            messageId: options.maxElseIf === 0 ? "disallowedElseIf" : "tooManyElseIf",
+                            data: { maxElseIf: options.maxElseIf },
+                        })
+                        break
+                    }
                 }
             },
 
