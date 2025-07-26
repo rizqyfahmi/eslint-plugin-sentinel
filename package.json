@@ -10,6 +10,7 @@
     "max-nested-loops",
     "max-nested-conditions",
     "max-alternative-conditions",
+    "no-else",
     "pattern-sort-import",
     "pattern-comment",
     "pattern",
