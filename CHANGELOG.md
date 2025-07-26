@@ -1,3 +1,7 @@
+## <small>1.6.4 (2025-07-26)</small>
+
+* chore(security): Create SECURITY.md ([e2ccdb6](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/e2ccdb6))
+
 ## <small>1.6.3 (2025-07-26)</small>
 
 * ci(pipeline): Add deployment integration ([b5421de](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/b5421de))
