@@ -3,6 +3,7 @@ import path from "path"
 import { default as maxNestedLoops } from "./rules/max-nested-loops"
 import { default as maxNestedConditions } from "./rules/max-nested-conditions"
 import { default as maxAlternativeConditions } from "./rules/max-alternative-conditions"
+import { default as noElse } from "./rules/no-else"
 import { default as patternSortImport } from "./rules/pattern-sort-import"
 import { default as patternComment } from "./rules/pattern-comment"
 
@@ -16,6 +17,7 @@ const plugin = {
         "max-nested-loops": maxNestedLoops,
         "max-nested-conditions": maxNestedConditions,
         "max-alternative-conditions": maxAlternativeConditions,
+        "no-else": noElse,
         "pattern-sort-import": patternSortImport,
         "pattern-comment": patternComment
     },
