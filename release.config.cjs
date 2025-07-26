@@ -15,7 +15,24 @@ module.exports = {
                 ]
             }
         ],
-        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/release-notes-generator",
+            {
+                preset: "conventionalcommits",
+                presetConfig: {
+                    types: [
+                        { type: "feat", section: "✨ Features" },
+                        { type: "fix", section: "🐛 Bug Fixes" },
+                        { type: "ci", section: "⚙️ CI/CD", hidden: false },
+                        { type: "chore", section: "🔧 Maintenance", hidden: false },
+                        { type: "docs", section: "📝 Documentation", hidden: false },
+                        { type: "style", section: "💅 Styling", hidden: false },
+                        { type: "perf", section: "⚡ Performance", hidden: false },
+                        { type: "build", section: "🏗 Build", hidden: false }
+                    ]
+                }
+            }
+        ],
         [
             "@semantic-release/changelog",
             {
