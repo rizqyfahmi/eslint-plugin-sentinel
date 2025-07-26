@@ -1,5 +1,5 @@
 name: Scorecard
-run-name: "Scorecard – Commit: ${{ github.event.head_commit.message || github.sha }}"
+run-name: "Scorecard – ${{ github.event.head_commit.message || github.sha }}"
 
 on:
   push:
