@@ -36,17 +36,17 @@ export default {
     "eslint-plugin-essential/max-nested-conditionals": ["error", { maxDepth: 1 }],
     "eslint-plugin-essential/max-alternative-conditions": ["error", {
       maxElseIf: 2,
-      maxElse: 1,
       maxCase: 5
     }],
+    "eslint-plugin-essential/no-else": "error",
     "eslint-plugin-essential/pattern-sort-import": ["error", [
       "^react",
       "^next",
       "^mobx-react-lite$",
-      "^react-icons",
       "^@/",
       "^\\.",
     ]],
+    "eslint-plugin-essential/pattern-comments": ["error"]
   },
 };
 ```
@@ -97,18 +97,14 @@ for (let i = 0; i < 10; i++) {
 
 ```js
 if (condition1) {
-  if (condition2) {  // ❌ Exceeds max depth of 1
+  if (condition2) {
     return 'Too Deep';
   }
 }
 ```
 
 ```js
-const result = condition1
-  ? condition2     // ❌ Nested ternary
-    ? 'A'
-    : 'B'
-  : 'C';
+const result = condition1 ? (condition2 ? 'A' : 'B') : 'C';
 ```
 
 #### ✅ Correct
@@ -135,7 +131,7 @@ const result = condition1 ? 'A' : 'B';
 
 ### 3. `max-alternative-conditions`
 
-**Limits the number of `else if`, `else`, and `switch case` branches to reduce complex branching logic.**
+**Limits the number of `else if` and `switch case` branches to reduce complex branching logic.**
 
 #### ❌ Incorrect
 
@@ -143,12 +139,7 @@ const result = condition1 ? 'A' : 'B';
 if (a) {}
 else if (b) {}
 else if (c) {}
-else if (d) {}  // ❌ Too many else-if branches
-```
-
-```js
-if (x) {}
-else {}  // ❌ Too many else branches if `maxElse` is 0
+else if (d) {}
 ```
 
 ```js
@@ -158,7 +149,7 @@ switch (value) {
   case 3: break;
   case 4: break;
   case 5: break;
-  case 6: break;  // ❌ Exceeds maxCase
+  case 6: break;
 }
 ```
 
@@ -167,7 +158,6 @@ switch (value) {
 ```js
 if (a) {}
 else if (b) {}
-else {}  // ✅ Within allowed branch limits
 ```
 
 ```js
@@ -180,25 +170,56 @@ switch (value) {
 
 #### Options
 
-You can customize the limits using the following options:
-
 * `maxElseIf` (number) – Maximum allowed `else if` branches (default: `2`)
-* `maxElse` (number) – Maximum allowed `else` branches (default: `1`)
 * `maxCase` (number) – Maximum allowed `switch` case clauses (default: `5`)
 
 ```js
 "eslint-plugin-essential/max-alternative-conditions": ["error", {
   maxElseIf: 2,
-  maxElse: 1,
   maxCase: 5
 }]
 ```
 
-> ℹ️ If no options are specified, the default limits apply.
+> ℹ️ `else` blocks are **no longer counted or restricted** by this rule.
+> Use `eslint-plugin-essential/no-else` to explicitly disallow `else`.
 
 ---
 
-### 4. `pattern-sort-import`
+### 4. `no-else`
+
+**Disallows the use of `else` blocks.**
+Encourages early returns and guard clauses for simpler, flatter code structure. `else if` is still allowed.
+
+#### ❌ Incorrect
+
+```js
+if (condition) {
+  return true;
+} else {
+  return false;
+}
+```
+
+#### ✅ Correct
+
+```js
+if (condition) {
+  return true;
+}
+return false;
+```
+
+#### Options
+
+This rule takes **no options**.
+
+```js
+"eslint-plugin-essential/no-else": "error"
+```
+
+---
+
+### 5. `pattern-sort-import`
 
 **Sorts import statements according to configured regex patterns without reordering imports within the same group.**
 
@@ -242,14 +263,9 @@ Example:
 ]]
 ```
 
-* Imports matching the first pattern (`^react`) come first.
-* Then imports matching `^next`, and so on.
-* Imports not matching any pattern appear last.
-* Imports inside the same group keep their original order.
-
 ---
 
-### 5. `pattern-comments`
+### 6. `pattern-comments`
 
 **Disallows all comments that do not match a specific pattern (regex).**
 Use this rule to enforce a consistent format for all comments (e.g., requiring tags like `TODO:`, `@public`, etc.).
