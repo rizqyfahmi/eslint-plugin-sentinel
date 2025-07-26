@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.5.0...v1.6.0) (2025-07-26)
+
+
+### Bug Fixes
+
+* **rule:** Resolve issue "else" is considered as "else-if" ([54e2fe9](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/54e2fe9859d01ad57778e843e6cbca1b8d70bb45))
+
+
+### Features
+
+* **rule:** Solve test case for no-else ([8cb1b41](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/8cb1b41d822b4aa2e2555eae9dc09022a5b2c9c9))
+
 # [1.5.0](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.4.0...v1.5.0) (2025-07-25)
 
 
