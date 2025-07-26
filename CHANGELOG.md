@@ -1,3 +1,8 @@
+## <small>1.6.3 (2025-07-26)</small>
+
+* ci(pipeline): Add deployment integration ([b5421de](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/b5421de))
+* Revert "docs(readme): Add Scorecard bedge" ([47fd88c](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/47fd88c))
+
 ## [1.6.2](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.6.1...v1.6.2) (2025-07-26)
 
 ## [1.6.1](https://github.com/rizqyfahmi/eslint-plugin-essential/compare/v1.6.0...v1.6.1) (2025-07-26)
