@@ -309,6 +309,43 @@ You can customize which comment formats are allowed using a regular expression s
 
 ---
 
+
+### 7. `pattern-restricted-import`
+
+**Disallows import paths that match specific regular expression patterns.**
+Use this rule to **restrict imports** from specific directories or files—such as test helpers, internal modules, or implementation details that should remain private.
+
+#### ❌ Incorrect
+
+```js
+import helper from '../test/helper'        // 🚫 Matches /test/
+import internal from '@/internal/api'      // 🚫 Matches ^@/internal/
+import testUtil from './foo/bar.test.ts'   // 🚫 Matches \.test$
+```
+
+#### ✅ Correct
+
+```js
+import api from '@/public/api'
+import { Button } from '@/components/ui'
+```
+
+#### Options
+
+Provide an array of regular expression strings to define restricted import paths.
+
+```js
+"eslint-plugin-essential/pattern-restricted-import": ["error", [
+  "/test/",
+  "^@/internal/",
+  "\\.test$"
+]]
+```
+
+> ℹ️ This rule helps enforce **boundary protection** in your codebase by preventing unintended dependencies on test files or internal modules.
+
+---
+
 ## 🔓 License
 
 See the [LICENSE](https://github.com/rizqyfahmi/eslint-plugin-essential/blob/master/LICENSE) file for license rights and limitations (MIT).
