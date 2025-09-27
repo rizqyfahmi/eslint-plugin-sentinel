@@ -1,3 +1,9 @@
+## 1.7.0 (2025-09-27)
+
+* docs(readme): Improve formatting and clarify usage instructions for pattern-restricted-import ([35f446c](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/35f446c))
+* feat(rule): Solve test for pattern-restricted-import ([63a0ca9](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/63a0ca9))
+* test(rule): Create test for pattern-restricted-import ([a59d45e](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/a59d45e))
+
 ## <small>1.6.4 (2025-07-26)</small>
 
 * chore(security): Create SECURITY.md ([e2ccdb6](https://github.com/rizqyfahmi/eslint-plugin-essential/commit/e2ccdb6))
